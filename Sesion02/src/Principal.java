@@ -39,5 +39,28 @@ public class Principal {
         {
             System.out.println("Ud es menor de edad no puede comprar alcohol");
         }
+        
+        System.out.print("Ingrese un número:");
+        int numero = leerTeclado.nextInt();
+        
+        if(numero < 10)
+        {
+            System.out.println("CON unidades");
+        }
+        else if(numero < 100)
+        {
+            System.out.println("CON decenas");
+        }        
+        else if(numero < 1000)
+        {
+            System.out.println("CON centenas");
+        }
+        else
+        {
+            System.out.println("CON otros");
+        }
+        
+        // SOLICITAR LA EDAD Y CLASIFICAR SEGÚN RANGO ETARIO 
+        // (NIÑO, ADOLESCENTE, ADULTO, 3RA EDAD)
     }
 }
