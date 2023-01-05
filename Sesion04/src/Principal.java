@@ -30,36 +30,24 @@ public class Principal {
             {
                 break;
             }
-            else if(opcion == 1)
+            System.out.println("Ingrese 1er número: ");
+            n1 = leer.nextInt();
+            System.out.println("Ingrese 2do número: ");
+            n2 = leer.nextInt();
+            if(opcion == 1)
             {
-                System.out.println("Ingrese 1er número: ");
-                n1 = leer.nextInt();
-                System.out.println("Ingrese 2do número: ");
-                n2 = leer.nextInt();
                 total = n1 + n2; 
             }
             else if(opcion == 2)
             {
-                System.out.println("Ingrese 1er número: ");
-                n1 = leer.nextInt();
-                System.out.println("Ingrese 2do número: ");
-                n2 = leer.nextInt();
                 total = n1 - n2; 
             }
             else if(opcion == 3)
             {
-                System.out.println("Ingrese 1er número: ");
-                n1 = leer.nextInt();
-                System.out.println("Ingrese 2do número: ");
-                n2 = leer.nextInt();
                 total = n1 * n2; 
             }
             else if(opcion == 4)
             {
-                System.out.println("Ingrese 1er número: ");
-                n1 = leer.nextInt();
-                System.out.println("Ingrese 2do número: ");
-                n2 = leer.nextInt();
                 total = n1 / n2; 
             }
             
