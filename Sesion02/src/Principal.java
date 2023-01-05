@@ -62,5 +62,25 @@ public class Principal {
         
         // SOLICITAR LA EDAD Y CLASIFICAR SEGÚN RANGO ETARIO 
         // (NIÑO, ADOLESCENTE, ADULTO, 3RA EDAD)
+        System.out.print("Ingrese su edad:");
+        edad = leerTeclado.nextInt();
+        
+        if(edad < 12)
+        {
+            System.out.println("Ud es un niño");
+        }
+        else if(edad < 18)
+        {
+            System.out.println("Ud es adolescente");
+        }        
+        else if(edad < 65)
+        {
+            System.out.println("Ud es un adulto");
+        }
+        else
+        {
+            System.out.println("Ud está en la 3ra edad");
+        }
+        
     }
 }
