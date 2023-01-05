@@ -6,6 +6,7 @@ public class Pizza {
     private String masa;
     private int precio;
     private boolean estaEnPromocion;
+    
     // 2.- constructores
     public Pizza()
     {

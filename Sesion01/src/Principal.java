@@ -3,13 +3,13 @@ public class Principal {
     {
         System.out.println("Hola Mundo!");
         System.out.println("¿Cómo están?");
-        
+
         // instancia de la clase
         Pizza pepperoni;
         pepperoni = new Pizza();
-     
+
         Pizza napolitana = new Pizza();
-        
+
         String mensaje = pepperoni.preparar();
         System.out.println(mensaje);
         System.out.println(pepperoni.calentar());
