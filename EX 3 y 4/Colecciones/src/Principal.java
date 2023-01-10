@@ -38,5 +38,28 @@ public class Principal {
             System.out.println("El nombre del indice " + i +": " + nombres.get(i));
         }
         
+        // buscar un valor si existe
+        String nombreBuscado = "francisco";
+        for (String nombre : nombres) {
+            if(nombre.equalsIgnoreCase(nombreBuscado))
+                System.out.println("El nombre ya existe");
+        }
+        // busca indice del elemento a buscar. Si no existe devuelve -1
+        if(nombres.indexOf("Francisco")>= 0)
+            System.out.println("El nombre ya existe");
+        
+        if(nombres.indexOf("Anita") == -1)
+            System.out.println("El nombre NO  existe");
+        
+        if(nombres.contains("Francisco"))
+            System.out.println("El nombre ya existe"); 
+        if(nombres.contains("Anita"))
+            System.out.println("El nombre ya existe");
+        else
+            System.out.println("El nombre Anita NO  existe");
+         
+        // elimina todos los datos de la colección
+        nombres.clear();
+        System.out.println("Cantidad de elementos:" + nombres.size());
     }
 }
