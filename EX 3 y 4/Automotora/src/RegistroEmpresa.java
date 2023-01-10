@@ -1,13 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.util.ArrayList;
 
-/**
- *
- * @author patri
- */
 public class RegistroEmpresa {
+    private ArrayList<Empleado> empleados;
     
+    public RegistroEmpresa()
+    {
+        empleados = new ArrayList<Empleado>();
+    }
+    
+    public Empleado buscar(String rut)
+    {
+        for (Empleado empleado : empleados) {
+            if(empleado.getRut().equalsIgnoreCase(rut))
+                return empleado;
+        }
+        return null;
+    }
+    
+    public boolean agregar(Empleado empleado)
+    {
+        if(this.buscar(empleado.getRut()) == null)
+        {
+            empleados.add(empleado);
+            return true;
+        }
+        else
+            return false;
+    }
 }
