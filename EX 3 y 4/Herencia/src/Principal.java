@@ -13,5 +13,15 @@ public class Principal {
         
         
         // crear 2 anillos e imprimir los datos que contienen
+        
+        Anillo anillo1 = new Anillo(15.5f, 3000, "compromiso", "Plata 925");
+        Anillo anillo2 = new Anillo(17.5f, 4000, "Matrimonio", "Oro con diamante");
+        
+        System.out.println(anillo1.imprimirDatos());
+        System.out.println(anillo2.imprimirDatos());
+        
+        Pulsera p = new Pulsera("Tobillo", 7000, "Pulsera tobillera", "Plata 900");
+        System.out.println(p.imprimirDatos());
+        
     }
 }
