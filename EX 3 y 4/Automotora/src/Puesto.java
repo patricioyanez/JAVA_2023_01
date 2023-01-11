@@ -31,8 +31,8 @@ public class Puesto {
     
     public String imprimirDatos()
     {
-        String datos = "\nCodigo    : " + this.codigo +
-                        "\nNombre   : " + this.nombre;
+        String datos = "\nCodigo          : " + this.codigo +
+                        "\nNombre          : " + this.nombre;
         return datos;
     }
 }
