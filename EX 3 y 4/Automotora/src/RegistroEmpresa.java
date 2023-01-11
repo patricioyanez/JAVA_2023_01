@@ -27,4 +27,23 @@ public class RegistroEmpresa {
         else
             return false;
     }
+    
+    public void listar()
+    {
+        for (Empleado empleado : empleados) {
+            System.out.println(empleado.imprimirDatos());
+        }
+    }
+    
+    public boolean eliminar(String rut)
+    {
+        for (Empleado empleado : empleados) {
+            if(this.buscar(rut)!= null)
+            {
+                empleados.remove(empleado);
+                return true;
+            }
+        }
+        return false;
+    }
 }
