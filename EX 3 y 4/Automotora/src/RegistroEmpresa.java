@@ -46,4 +46,9 @@ public class RegistroEmpresa {
         }
         return false;
     }
+    
+    public int contar()
+    {
+        return empleados.size();
+    }
 }

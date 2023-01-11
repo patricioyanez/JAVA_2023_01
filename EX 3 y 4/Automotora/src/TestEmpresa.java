@@ -20,8 +20,13 @@ public class TestEmpresa { // Principal
             System.out.println("Los datos del empleado son:");
             System.out.println(aux.imprimirDatos());
         }
+        // listar todos los empleados
         
         // contar cuantos empleados existen en la clase contenedora
+        System.out.println("Cantidad de empleados: " + re.contar());
         
+        re.eliminar("1-9");
+        
+        System.out.println("Cantidad de empleados: " + re.contar());
     }
 }
