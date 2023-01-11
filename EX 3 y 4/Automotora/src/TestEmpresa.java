@@ -12,7 +12,7 @@ public class TestEmpresa { // Principal
         re.agregar(empleado1);
         re.agregar(empleado2);
         
-        Empleado aux = re.buscar("1-9");
+        Empleado aux = re.buscar("3-9");
         if( aux == null)
             System.out.println("Empleado no existe");
         else
@@ -21,7 +21,9 @@ public class TestEmpresa { // Principal
             System.out.println(aux.imprimirDatos());
         }
         // listar todos los empleados
-        
+        System.out.println("\n\n************* Listado de empleados ***************");
+        re.listar();
+        System.out.println("******************************************************\n\n");
         // contar cuantos empleados existen en la clase contenedora
         System.out.println("Cantidad de empleados: " + re.contar());
         

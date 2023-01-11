@@ -84,6 +84,7 @@ public class Empleado {
  //       datos += "\nCódigo de puesto: " + this.puesto.getCodigo();
  //       datos += "\nNombre de puesto: " + this.puesto.getNombre();
         datos += this.puesto.imprimirDatos();
+        datos +="\n";
         return datos;
     }
 }
