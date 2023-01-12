@@ -6,5 +6,10 @@ public class Principal {
         
         String nombre;
         
+        Persona p = new Persona();
+        
+        
+        IOperaciones pe = new Pez();
+        pe.calcularPrecioConIVA();
     }
 }
