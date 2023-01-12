@@ -56,18 +56,19 @@ public class Cadena extends Joya {
 
         if(super.getMaterial().toUpperCase().contains("PLATA"))       
             precio = 4500;
-         
-        resultado = precio - ((precio * this.largo)*porcentajeDescuento /100); 
+        
+        precio = precio * this.largo;
+        resultado = precio - (precio *porcentajeDescuento /100); 
         return resultado;
     }
-    public double precio(String moneda, int precioActual)
+    public double precio(String moneda)
     {
         int precio = this.precio();
         double resultado = 0.0;
         if(moneda.equalsIgnoreCase("DOLAR"))
-        {
-            
-        }
+            resultado = precio / 800;
+        else if(moneda.equalsIgnoreCase("EURO"))
+            resultado = precio / 860;
         return resultado;
     }
 }
