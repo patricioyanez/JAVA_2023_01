@@ -32,5 +32,42 @@ public class Cadena extends Joya {
     }
     
     
+    // sobrecarga de métodos
     
+    public int precio()
+    {
+        int resultado = 0;
+        int precio = 0;
+        if(super.getMaterial().toUpperCase().contains("ORO"))
+            precio = 15000;
+
+        if(super.getMaterial().toUpperCase().contains("PLATA"))       
+            precio = 4500;
+         
+        resultado = precio * this.largo; 
+        return resultado;
+    }
+    public int precio(int porcentajeDescuento)
+    {
+        int resultado = 0;
+        int precio = 0;
+        if(super.getMaterial().toUpperCase().contains("ORO"))
+            precio = 15000;
+
+        if(super.getMaterial().toUpperCase().contains("PLATA"))       
+            precio = 4500;
+         
+        resultado = precio - ((precio * this.largo)*porcentajeDescuento /100); 
+        return resultado;
+    }
+    public double precio(String moneda, int precioActual)
+    {
+        int precio = this.precio();
+        double resultado = 0.0;
+        if(moneda.equalsIgnoreCase("DOLAR"))
+        {
+            
+        }
+        return resultado;
+    }
 }
