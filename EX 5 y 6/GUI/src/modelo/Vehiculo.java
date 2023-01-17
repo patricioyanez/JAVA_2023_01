@@ -2,7 +2,7 @@
 package modelo;
 
 
-public class Vehiculo {
+public abstract class Vehiculo {
     private String patente;
     private String marca;
     private String modelo;

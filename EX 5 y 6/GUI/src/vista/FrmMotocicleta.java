@@ -220,6 +220,8 @@ public class FrmMotocicleta extends javax.swing.JFrame {
         
         motocicleta.setEstilo(txtEstilo.getText().toUpperCase().trim());
         
+        
+        // TAREA: CREAR una tabla para almacenar todos los vehiculos
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
