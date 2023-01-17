@@ -96,7 +96,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
     private void mnuAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAutomovilActionPerformed
         // TODO add your handling code here:
-        new FrmVehiculo().setVisible(true);
+        new FrmAutomovil().setVisible(true);
     }//GEN-LAST:event_mnuAutomovilActionPerformed
 
     private void mnuMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMotocicletaActionPerformed
