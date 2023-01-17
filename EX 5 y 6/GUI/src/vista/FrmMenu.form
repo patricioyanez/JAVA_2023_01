@@ -9,12 +9,12 @@
             <Property name="text" type="java.lang.String" value="Administraci&#xf3;n"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mnuVehiculo">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuAutomovil">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Vehiculo"/>
+                <Property name="text" type="java.lang.String" value="Autom&#xf3;vil"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuVehiculoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuAutomovilActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuSalida">

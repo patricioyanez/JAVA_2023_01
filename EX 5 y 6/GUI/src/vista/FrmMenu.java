@@ -29,7 +29,7 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        mnuVehiculo = new javax.swing.JMenuItem();
+        mnuAutomovil = new javax.swing.JMenuItem();
         mnuSalida = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuSalida2 = new javax.swing.JMenuItem();
@@ -39,13 +39,13 @@ public class FrmMenu extends javax.swing.JFrame {
 
         jMenu1.setText("Administración");
 
-        mnuVehiculo.setText("Vehiculo");
-        mnuVehiculo.addActionListener(new java.awt.event.ActionListener() {
+        mnuAutomovil.setText("Automóvil");
+        mnuAutomovil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuVehiculoActionPerformed(evt);
+                mnuAutomovilActionPerformed(evt);
             }
         });
-        jMenu1.add(mnuVehiculo);
+        jMenu1.add(mnuAutomovil);
 
         mnuSalida.setText("Salir");
         jMenu1.add(mnuSalida);
@@ -75,10 +75,10 @@ public class FrmMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mnuVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVehiculoActionPerformed
+    private void mnuAutomovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAutomovilActionPerformed
         // TODO add your handling code here:
         new FrmVehiculo().setVisible(true);
-    }//GEN-LAST:event_mnuVehiculoActionPerformed
+    }//GEN-LAST:event_mnuAutomovilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,8 +119,8 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mnuAutomovil;
     private javax.swing.JMenuItem mnuSalida;
     private javax.swing.JMenuItem mnuSalida2;
-    private javax.swing.JMenuItem mnuVehiculo;
     // End of variables declaration//GEN-END:variables
 }
