@@ -10,6 +10,8 @@
 */
 package vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author patri
@@ -68,8 +70,18 @@ public class FrmVehiculo extends javax.swing.JFrame {
         jLabel6.setText("Cant. Puertas");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
 
@@ -163,6 +175,53 @@ public class FrmVehiculo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        txtPatente.setText("");
+        txtMarca.setText("");
+        txtModelo.setText("");
+        txtLtsMaletero.setText("");
+        txtCantPuertas.setText("");
+        txtPatente.requestFocus();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        // validar los datos
+        if(txtPatente.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó patente");
+            txtPatente.requestFocus();
+            return;
+        }
+        if(txtMarca.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó marca");
+            txtMarca.requestFocus();
+            return;
+        }
+        if(txtModelo.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó modelo");
+            txtModelo.requestFocus();
+            return;
+        }
+        if(txtLtsMaletero.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó Litros de Maletero");
+            txtLtsMaletero.requestFocus();
+            return;
+        }        
+        if(txtCantPuertas.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó Cantidad de puertas");
+            txtCantPuertas.requestFocus();
+            return;
+        }
+        
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
