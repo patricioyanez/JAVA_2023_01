@@ -219,7 +219,7 @@ public class FrmVehiculo extends javax.swing.JFrame {
             txtCantPuertas.requestFocus();
             return;
         }
-        
+        // otras validaciones
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
