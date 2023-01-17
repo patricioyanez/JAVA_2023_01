@@ -233,6 +233,8 @@ public class FrmAutomovil extends javax.swing.JFrame {
         valor = Integer.parseInt(txtCantPuertas.getText());
         automovil.setCantidadPuerta(valor);
         
+        // Ejercicio:
+        // Desarrollar boton limpiar y grabar para motocicleta
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
