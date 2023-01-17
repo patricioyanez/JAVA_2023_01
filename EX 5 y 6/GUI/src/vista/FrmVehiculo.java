@@ -1,8 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+    Ejercicios:
+    Crear para el modelo Motocicleta:
+    modelo, formulario y opcion de 
+    ingreso via menú
+    
+
+
+*/
 package vista;
 
 /**
@@ -72,13 +76,10 @@ public class FrmVehiculo extends javax.swing.JFrame {
 
         grilla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Patente", "Marca", "Modelo", "Lts Maletero", "Cant. Puertas"
             }
         ));
         jScrollPane1.setViewportView(grilla);
