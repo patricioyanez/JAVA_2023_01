@@ -10,6 +10,9 @@
 */
 package vista;
 
+import javax.swing.JOptionPane;
+import modelo.Motocicleta;
+
 /**
  *
  * @author patri
@@ -41,8 +44,8 @@ public class FrmMotocicleta extends javax.swing.JFrame {
         txtPatente = new javax.swing.JTextField();
         txtMarca = new javax.swing.JTextField();
         txtModelo = new javax.swing.JTextField();
-        txtLtsMaletero = new javax.swing.JTextField();
-        txtCantPuertas = new javax.swing.JTextField();
+        txtLargoManillar = new javax.swing.JTextField();
+        txtEstilo = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
@@ -68,8 +71,18 @@ public class FrmMotocicleta extends javax.swing.JFrame {
         jLabel6.setText("Estilo");
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnBuscar.setText("Buscar");
 
@@ -105,8 +118,8 @@ public class FrmMotocicleta extends javax.swing.JFrame {
                             .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtModelo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtCantPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtLtsMaletero, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtLargoManillar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtPatente, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -146,13 +159,13 @@ public class FrmMotocicleta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtLtsMaletero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLargoManillar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpiar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCantPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtEstilo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnGuardar)
                         .addComponent(btnListar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -162,6 +175,62 @@ public class FrmMotocicleta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        if(txtPatente.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó patente");
+            txtPatente.requestFocus();
+            return;
+        }
+        if(txtMarca.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó marca");
+            txtMarca.requestFocus();
+            return;
+        }
+        if(txtModelo.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó modelo");
+            txtModelo.requestFocus();
+            return;
+        }
+        if(txtLargoManillar.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó Litros de Maletero");
+            txtLargoManillar.requestFocus();
+            return;
+        }        
+        if(txtEstilo.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó Cantidad de puertas");
+            txtEstilo.requestFocus();
+            return;
+        }
+        // otras validaciones
+        
+        Motocicleta motocicleta = new Motocicleta();
+        motocicleta.setPatente(txtPatente.getText().toUpperCase().trim());
+        motocicleta.setMarca(txtMarca.getText().toUpperCase().trim());
+        motocicleta.setModelo(txtModelo.getText().toUpperCase().trim());
+        
+        int valor = Integer.parseInt(txtLargoManillar.getText());
+        motocicleta.setLargoManillar(valor);
+        
+        motocicleta.setEstilo(txtEstilo.getText().toUpperCase().trim());
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        txtPatente.setText("");
+        txtMarca.setText("");
+        txtModelo.setText("");
+        txtLargoManillar.setText("");
+        txtEstilo.setText("");
+        txtPatente.requestFocus();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,8 +281,8 @@ public class FrmMotocicleta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtCantPuertas;
-    private javax.swing.JTextField txtLtsMaletero;
+    private javax.swing.JTextField txtEstilo;
+    private javax.swing.JTextField txtLargoManillar;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtPatente;
