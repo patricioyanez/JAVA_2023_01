@@ -50,7 +50,7 @@ public class FrmMotocicleta extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         grilla = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Automóvil");
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 36)); // NOI18N

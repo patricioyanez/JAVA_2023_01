@@ -30,6 +30,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuAutomovil = new javax.swing.JMenuItem();
+        mnuMotocicleta = new javax.swing.JMenuItem();
         mnuSalida = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuSalida2 = new javax.swing.JMenuItem();
@@ -47,7 +48,20 @@ public class FrmMenu extends javax.swing.JFrame {
         });
         jMenu1.add(mnuAutomovil);
 
+        mnuMotocicleta.setText("Motocicleta");
+        mnuMotocicleta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuMotocicletaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuMotocicleta);
+
         mnuSalida.setText("Salir");
+        mnuSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSalidaActionPerformed(evt);
+            }
+        });
         jMenu1.add(mnuSalida);
 
         jMenuBar1.add(jMenu1);
@@ -55,6 +69,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu2.setText("Salida");
 
         mnuSalida2.setText("Salir");
+        mnuSalida2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSalida2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(mnuSalida2);
 
         jMenuBar1.add(jMenu2);
@@ -79,6 +98,21 @@ public class FrmMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         new FrmVehiculo().setVisible(true);
     }//GEN-LAST:event_mnuAutomovilActionPerformed
+
+    private void mnuMotocicletaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMotocicletaActionPerformed
+        // TODO add your handling code here:
+        new FrmMotocicleta().setVisible(true);
+    }//GEN-LAST:event_mnuMotocicletaActionPerformed
+
+    private void mnuSalida2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalida2ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_mnuSalida2ActionPerformed
+
+    private void mnuSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalidaActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_mnuSalidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,6 +154,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mnuAutomovil;
+    private javax.swing.JMenuItem mnuMotocicleta;
     private javax.swing.JMenuItem mnuSalida;
     private javax.swing.JMenuItem mnuSalida2;
     // End of variables declaration//GEN-END:variables
