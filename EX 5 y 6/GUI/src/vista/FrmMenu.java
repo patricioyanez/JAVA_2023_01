@@ -27,7 +27,39 @@ public class FrmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        mnuVehiculo = new javax.swing.JMenuItem();
+        mnuSalida = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mnuSalida2 = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menú principal");
+
+        jMenu1.setText("Administración");
+
+        mnuVehiculo.setText("Vehiculo");
+        mnuVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuVehiculoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuVehiculo);
+
+        mnuSalida.setText("Salir");
+        jMenu1.add(mnuSalida);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Salida");
+
+        mnuSalida2.setText("Salir");
+        jMenu2.add(mnuSalida2);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -37,11 +69,16 @@ public class FrmMenu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mnuVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuVehiculoActionPerformed
+        // TODO add your handling code here:
+        new FrmVehiculo().setVisible(true);
+    }//GEN-LAST:event_mnuVehiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +116,11 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem mnuSalida;
+    private javax.swing.JMenuItem mnuSalida2;
+    private javax.swing.JMenuItem mnuVehiculo;
     // End of variables declaration//GEN-END:variables
 }
