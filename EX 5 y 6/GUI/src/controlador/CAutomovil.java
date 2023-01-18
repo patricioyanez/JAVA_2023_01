@@ -43,16 +43,15 @@ public class CAutomovil{ // C.R.U.D.
         return false;
     }
 
-
-    public boolean eliminar(int id) {
+    public boolean eliminar(String patente) {
         try {
             Conexion c = new Conexion();
             Connection con = c.obtenerConexion();
         
-            String query = "DELETE FROM VEHICULO WHERE IDVEHICULO = ?";
+            String query = "DELETE FROM VEHICULO WHERE patente = ?";
         
             PreparedStatement st = con.prepareStatement(query);
-            st.setInt(1, id);
+            st.setString(1, patente);
             
             st.executeUpdate();
 
@@ -65,7 +64,6 @@ public class CAutomovil{ // C.R.U.D.
         return false;
     }
 
-
     public boolean actualizar(Automovil automovil) {
         try {
             Conexion c = new Conexion();
@@ -76,7 +74,7 @@ public class CAutomovil{ // C.R.U.D.
                             + "modelo = ?, "
                             + "litrosMaletero = ?,"
                             + "cantidadPuerta = ? "
-                            + "WHERE idVehiculo = ?" ;
+                            + "WHERE patente = ?" ;
         
             PreparedStatement st = con.prepareStatement(query);
             st.setString(1, automovil.getMarca());
@@ -96,17 +94,16 @@ public class CAutomovil{ // C.R.U.D.
         return false;
     }
 
-
-    public Automovil buscarPorId(int id) {
+    public Automovil buscarPorPatente(String patente) {
         Automovil auto = null;
         try {
             Conexion c = new Conexion();
             Connection con = c.obtenerConexion();
         
-            String query = "SELECT * FROM VEHICULO WHERE IDVEHICULO = ?";
+            String query = "SELECT * FROM VEHICULO WHERE PATENTE = ?";
         
             PreparedStatement st = con.prepareStatement(query);
-            st.setInt(1, id);
+            st.setString(1, patente);
             ResultSet rs = st.executeQuery();
             
             if(rs.next())

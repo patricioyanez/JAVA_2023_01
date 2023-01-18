@@ -10,7 +10,10 @@
 */
 package vista;
 
+import controlador.CAutomovil;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Automovil;
 
 /**
@@ -50,8 +53,10 @@ public class FrmAutomovil extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         grilla = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de Automóvil");
@@ -85,8 +90,25 @@ public class FrmAutomovil extends javax.swing.JFrame {
         });
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnListar.setText("Listar");
+        btnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         grilla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,6 +120,14 @@ public class FrmAutomovil extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(grilla);
 
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
+        jButton1.setText("Eliminar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,7 +136,7 @@ public class FrmAutomovil extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,19 +156,26 @@ public class FrmAutomovil extends javax.swing.JFrame {
                                         .addComponent(txtPatente, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnBuscar)))
-                                .addGap(94, 94, 94)
+                                .addGap(72, 72, 72)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnListar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(4, 4, 4))))
+                                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(btnModificar)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
                         .addComponent(jLabel1)))
-                .addGap(19, 19, 19))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnGuardar, btnListar, btnModificar, jButton1});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -153,25 +190,35 @@ public class FrmAutomovil extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtLtsMaletero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCantPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnGuardar)
-                        .addComponent(btnListar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtLtsMaletero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(txtCantPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(btnLimpiar)
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnListar))
+                        .addContainerGap())))
         );
 
         pack();
@@ -232,11 +279,139 @@ public class FrmAutomovil extends javax.swing.JFrame {
         
         valor = Integer.parseInt(txtCantPuertas.getText());
         automovil.setCantidadPuerta(valor);
+
+        CAutomovil controlador = new CAutomovil();
+        boolean res = controlador.agregar(automovil);
         
-        // Ejercicio:
-        // Desarrollar boton limpiar y grabar para motocicleta
+        if(res)
+        {
+            JOptionPane.showMessageDialog(this, "Los datos fueron guardados");
+            btnLimpiar.doClick();
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Ocurrio un error al intertar guardar");
         
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        if(txtPatente.getText().trim().length() > 0)
+        {
+            CAutomovil controlador = new CAutomovil();
+            Automovil auto = controlador.buscarPorPatente(txtPatente.getText());
+            
+            if(auto == null)
+            {
+                JOptionPane.showMessageDialog(this, "Patente no encontrada");
+            }
+            else
+            {
+                txtMarca.setText(auto.getMarca());
+                txtModelo.setText(auto.getModelo());
+                txtLtsMaletero.setText("" + auto.getLitrosMaleteros());
+                txtCantPuertas.setText("" + auto.getCantidadPuerta());
+            }
+        }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+ // validar los datos
+        if(txtPatente.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó patente");
+            txtPatente.requestFocus();
+            return;
+        }
+        if(txtMarca.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó marca");
+            txtMarca.requestFocus();
+            return;
+        }
+        if(txtModelo.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó modelo");
+            txtModelo.requestFocus();
+            return;
+        }
+        if(txtLtsMaletero.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó Litros de Maletero");
+            txtLtsMaletero.requestFocus();
+            return;
+        }        
+        if(txtCantPuertas.getText().trim().length() == 0)
+        {
+            JOptionPane.showMessageDialog(this, "No especificó Cantidad de puertas");
+            txtCantPuertas.requestFocus();
+            return;
+        }
+        // otras validaciones
+        
+        Automovil automovil = new Automovil();
+        automovil.setPatente(txtPatente.getText().toUpperCase().trim());
+        automovil.setMarca(txtMarca.getText().toUpperCase().trim());
+        automovil.setModelo(txtModelo.getText().toUpperCase().trim());
+        
+        int valor = Integer.parseInt(txtLtsMaletero.getText());
+        automovil.setLitrosMaleteros(valor);
+        
+        valor = Integer.parseInt(txtCantPuertas.getText());
+        automovil.setCantidadPuerta(valor);
+
+        CAutomovil controlador = new CAutomovil();
+        boolean res = controlador.actualizar(automovil);
+        
+        if(res)
+        {
+            JOptionPane.showMessageDialog(this, "Los datos fueron guardados");
+            btnLimpiar.doClick();
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Ocurrio un error al intertar guardar");       
+        
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel)grilla.getModel();
+        modelo.setRowCount(0);
+        
+        //CAutomovil controlador = new CAutomovil();
+        //ArrayList<Automovil> listado = controlador.buscarTodos();
+        
+        ArrayList<Automovil> listado = new CAutomovil().buscarTodos();
+        
+        for (Automovil automovil : listado) {
+            modelo.addRow(new Object[] {
+                automovil.getPatente(),
+                automovil.getMarca(),
+                automovil.getModelo(),
+                automovil.getLitrosMaleteros(),
+                automovil.getCantidadPuerta()
+            });
+        }
+    }//GEN-LAST:event_btnListarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(txtPatente.getText().trim().length() > 0)
+        {
+            CAutomovil controlador = new CAutomovil();
+            boolean res = controlador.eliminar(txtPatente.getText());
+            
+            if(res)
+            {
+                JOptionPane.showMessageDialog(this, "Patente fue eliminada");
+                btnListar.doClick();
+                btnLimpiar.doClick();
+            }
+            else
+                JOptionPane.showMessageDialog(this, "Patente no encontrada");
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,7 +454,9 @@ public class FrmAutomovil extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnListar;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JTable grilla;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
