@@ -1,6 +1,6 @@
 CREATE TABLE VEHICULO
 (
-    idVehiculo         int             primary key auto_increment,
+    idVehiculo          int             primary key auto_increment,
     patente             varchar(6)      not null,
     marca               varchar(100)    not null,
     modelo              varchar(100)    not null,
@@ -11,4 +11,5 @@ CREATE TABLE VEHICULO
     cantidadPuerta      int             null,
     largoManillar       int             null,
     estilo              varchar(100)    null
+--    ,tipoVehiculo        int             not null -- 1 Auto 2 moto
 );
