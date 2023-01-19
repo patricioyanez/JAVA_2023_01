@@ -14,6 +14,8 @@ CREATE TABLE VEHICULO
 --    ,tipoVehiculo        int             not null -- 1 Auto 2 moto
 );
 
+-- crear CRUD para las siguientes tablas:
+
 CREATE TABLE CARGO
 (
     idCargo             int             primary key auto_increment,
