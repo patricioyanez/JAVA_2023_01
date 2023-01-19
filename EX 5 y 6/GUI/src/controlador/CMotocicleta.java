@@ -7,30 +7,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.Automovil;
+import modelo.Motocicleta;
 
-public class CAutomovil{ // C.R.U.D.
+public class CMotocicleta{ // C.R.U.D.
 
 
-    public boolean agregar(Automovil automovil) {
+    public boolean agregar(Motocicleta motocicleta) {
         try {
             Conexion c = new Conexion();
             Connection con = c.obtenerConexion();
         
             String query = "INSERT INTO VEHICULO " + 
                             "(patente, marca, modelo, precioServicioNeto, " + 
-                            "valorIVA,totalAPagar,largoManillar, cantidadPuerta) " +
+                            "valorIVA,totalAPagar,largoManillar, estilo) " +
                             "VALUES (?,?,?,?,?,?,?,?)";
         
             PreparedStatement st = con.prepareStatement(query);
-            st.setString(1, automovil.getPatente());
-            st.setString(2, automovil.getMarca());
-            st.setString(3, automovil.getModelo());
+            st.setString(1, motocicleta.getPatente());
+            st.setString(2, motocicleta.getMarca());
+            st.setString(3, motocicleta.getModelo());
             st.setInt(4, 0);
             st.setInt(5, 0);
             st.setInt(6, 0);
-            st.setInt(7, automovil.getLitrosMaleteros());
-            st.setInt(8, automovil.getCantidadPuerta());
+            st.setInt(7, motocicleta.getLargoManillar());
+            st.setString(8, motocicleta.getEstilo());
             
             st.executeUpdate();
             st.close();
@@ -38,7 +38,7 @@ public class CAutomovil{ // C.R.U.D.
             return true;
             
         } catch (SQLException ex) {
-            Logger.getLogger(CAutomovil.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CMotocicleta.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
@@ -59,12 +59,12 @@ public class CAutomovil{ // C.R.U.D.
             con.close();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(CAutomovil.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CMotocicleta.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
 
-    public boolean actualizar(Automovil automovil) {
+    public boolean actualizar(Motocicleta motocicleta) {
         try {
             Conexion c = new Conexion();
             Connection con = c.obtenerConexion();
@@ -72,16 +72,16 @@ public class CAutomovil{ // C.R.U.D.
             String query = "UPDATE VEHICULO SET " 
                             + "marca = ?, "
                             + "modelo = ?, "
-                            + "litrosMaletero = ?,"
-                            + "cantidadPuerta = ? "
+                            + "largoManillar = ?,"
+                            + "estilo = ? "
                             + "WHERE patente = ?" ;
         
             PreparedStatement st = con.prepareStatement(query);
-            st.setString(1, automovil.getMarca());
-            st.setString(2, automovil.getModelo());
-            st.setInt(3, automovil.getLitrosMaleteros());
-            st.setInt(4, automovil.getCantidadPuerta());
-            st.setString(5, automovil.getPatente());
+            st.setString(1, motocicleta.getMarca());
+            st.setString(2, motocicleta.getModelo());
+            st.setInt(3, motocicleta.getLargoManillar());
+            st.setString(4, motocicleta.getEstilo());
+            st.setString(5, motocicleta.getPatente());
             
             st.executeUpdate();
             st.close();
@@ -89,13 +89,13 @@ public class CAutomovil{ // C.R.U.D.
             return true;
             
         } catch (SQLException ex) {
-            Logger.getLogger(CAutomovil.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CMotocicleta.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
     }
 
-    public Automovil buscarPorPatente(String patente) {
-        Automovil auto = null;
+    public Motocicleta buscarPorPatente(String patente) {
+        Motocicleta motocicleta = null;
         try {
             Conexion c = new Conexion();
             Connection con = c.obtenerConexion();
@@ -108,29 +108,29 @@ public class CAutomovil{ // C.R.U.D.
             
             if(rs.next())
             {
-                auto = new Automovil();
-                auto.setPatente(rs.getString("patente"));
-                auto.setMarca(rs.getString("marca"));
-                auto.setModelo(rs.getString("modelo"));
-                auto.setLitrosMaleteros(rs.getInt("litrosMaletero"));
-                auto.setCantidadPuerta(rs.getInt("cantidadPuerta"));
+                motocicleta = new Motocicleta();
+                motocicleta.setPatente(rs.getString("patente"));
+                motocicleta.setMarca(rs.getString("marca"));
+                motocicleta.setModelo(rs.getString("modelo"));
+                motocicleta.setLargoManillar(rs.getInt("largoManillar"));
+                motocicleta.setEstilo(rs.getString("estilo"));
             }
             rs.close();
             st.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(CAutomovil.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CMotocicleta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return auto;
+        return motocicleta;
     }
 
-    public ArrayList<Automovil> buscarTodos() {
-        ArrayList<Automovil> automoviles = new ArrayList<Automovil>();
+    public ArrayList<Motocicleta> buscarTodos() {
+        ArrayList<Motocicleta> motocicletas = new ArrayList<Motocicleta>();
         try {
             Conexion c = new Conexion();
             Connection con = c.obtenerConexion();
         
-            String query = "SELECT * FROM VEHICULO WHERE litrosMaletero > 0  AND cantidadPuerta > 0";
+            String query = "SELECT * FROM VEHICULO WHERE largoManillar > 0  AND estilo <> ''";
         
             PreparedStatement st = con.prepareStatement(query);
             
@@ -138,22 +138,21 @@ public class CAutomovil{ // C.R.U.D.
             
             while(rs.next())
             {
-                Automovil auto = new Automovil();
-                auto.setPatente(rs.getString("patente"));
-                auto.setMarca(rs.getString("marca"));
-                auto.setModelo(rs.getString("modelo"));
-                auto.setLitrosMaleteros(rs.getInt("litrosMaletero"));
-                auto.setCantidadPuerta(rs.getInt("cantidadPuerta"));
-                automoviles.add(auto);
+                Motocicleta motocicleta = new Motocicleta();
+                motocicleta.setPatente(rs.getString("patente"));
+                motocicleta.setMarca(rs.getString("marca"));
+                motocicleta.setModelo(rs.getString("modelo"));
+                motocicleta.setLargoManillar(rs.getInt("largoManillar"));
+                motocicleta.setEstilo(rs.getString("estilo"));
+                motocicletas.add(motocicleta);
             }
             rs.close();
             st.close();
             con.close();
         } catch (SQLException ex) {
-            Logger.getLogger(CAutomovil.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CMotocicleta.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return automoviles;
+        return motocicletas;
     }
-
 
 }

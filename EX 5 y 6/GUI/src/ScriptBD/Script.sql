@@ -13,3 +13,23 @@ CREATE TABLE VEHICULO
     estilo              varchar(100)    null
 --    ,tipoVehiculo        int             not null -- 1 Auto 2 moto
 );
+
+CREATE TABLE CARGO
+(
+    idCargo             int             primary key auto_increment,
+    nombre              varchar(50)     not null,
+    UNIQUE(nombre)
+)
+CREATE TABLE PERSONAL
+(
+    idPersona           int             primary key auto_increment,
+    idCargo             int             not null,
+    rut                 int             not null,
+    digito              varchar(1)      not null,
+    nombre              varchar(50)     not null,
+    apellido            varchar(50)     not null,
+    sueldo              int             not null,
+    UNIQUE(rut),
+    FOREIGN KEY(idCargo)
+                    REFERENCES CARGO(idCargo)
+)
