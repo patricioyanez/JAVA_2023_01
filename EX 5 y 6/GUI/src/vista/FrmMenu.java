@@ -31,6 +31,7 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         mnuAutomovil = new javax.swing.JMenuItem();
         mnuMotocicleta = new javax.swing.JMenuItem();
+        mnuCargo = new javax.swing.JMenuItem();
         mnuSalida = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         mnuSalida2 = new javax.swing.JMenuItem();
@@ -55,6 +56,14 @@ public class FrmMenu extends javax.swing.JFrame {
             }
         });
         jMenu1.add(mnuMotocicleta);
+
+        mnuCargo.setText("Cargo");
+        mnuCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCargoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(mnuCargo);
 
         mnuSalida.setText("Salir");
         mnuSalida.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +123,11 @@ public class FrmMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_mnuSalidaActionPerformed
 
+    private void mnuCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCargoActionPerformed
+        // TODO add your handling code here:
+        new FrmCargo().setVisible(true);
+    }//GEN-LAST:event_mnuCargoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -154,6 +168,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mnuAutomovil;
+    private javax.swing.JMenuItem mnuCargo;
     private javax.swing.JMenuItem mnuMotocicleta;
     private javax.swing.JMenuItem mnuSalida;
     private javax.swing.JMenuItem mnuSalida2;
