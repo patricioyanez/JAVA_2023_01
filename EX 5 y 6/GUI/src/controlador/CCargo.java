@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Cargo;
+import java.util.Vector;
 
 public class CCargo{ // C.R.U.D.
 
@@ -131,5 +132,33 @@ public class CCargo{ // C.R.U.D.
             Logger.getLogger(CCargo.class.getName()).log(Level.SEVERE, null, ex);
         }
         return cargos;
+    }
+    
+    public Vector cargarCombo() {
+        Vector items = new Vector();
+        try {
+            Conexion c = new Conexion();
+            Connection con = c.obtenerConexion();
+        
+            String query = "SELECT * FROM CARGO ";
+        
+            PreparedStatement st = con.prepareStatement(query);
+            
+            ResultSet rs = st.executeQuery();
+            
+            while(rs.next())
+            {
+                Cargo cargo = new Cargo();
+                cargo.setId(rs.getInt("idCargo"));
+                cargo.setNombre(rs.getString("nombre"));
+                items.add(cargo);
+            }
+            rs.close();
+            st.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CCargo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return items;
     }
 }
