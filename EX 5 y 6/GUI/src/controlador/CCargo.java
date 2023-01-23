@@ -140,12 +140,10 @@ public class CCargo{ // C.R.U.D.
             Conexion c = new Conexion();
             Connection con = c.obtenerConexion();
         
-            String query = "SELECT * FROM CARGO ";
-        
+            String query = "SELECT * FROM CARGO ";        
             PreparedStatement st = con.prepareStatement(query);
             
-            ResultSet rs = st.executeQuery();
-            
+            ResultSet rs = st.executeQuery();            
             while(rs.next())
             {
                 Cargo cargo = new Cargo();
