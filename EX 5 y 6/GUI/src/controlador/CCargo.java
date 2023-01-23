@@ -34,7 +34,7 @@ public class CCargo{ // C.R.U.D.
         return false;
     }
 
-    public boolean eliminar(String id) {
+    public boolean eliminar(int id) {
         try {
             Conexion c = new Conexion();
             Connection con = c.obtenerConexion();
@@ -42,7 +42,7 @@ public class CCargo{ // C.R.U.D.
             String query = "DELETE FROM CARGO WHERE idCargo = ?";
         
             PreparedStatement st = con.prepareStatement(query);
-            st.setString(1, id);
+            st.setInt(1, id);
             
             st.executeUpdate();
 
@@ -61,11 +61,12 @@ public class CCargo{ // C.R.U.D.
             Connection con = c.obtenerConexion();
         
             String query = "UPDATE CARGO SET " 
-                            + "nombre = ?, "
+                            + "nombre = ? "
                             + "WHERE idCargo = ?" ;
         
             PreparedStatement st = con.prepareStatement(query);
             st.setString(1, cargo.getNombre());
+            st.setInt(2, cargo.getId());
             st.executeUpdate();
             st.close();
             con.close();
@@ -131,6 +132,4 @@ public class CCargo{ // C.R.U.D.
         }
         return cargos;
     }
-
-
 }

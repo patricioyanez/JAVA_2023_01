@@ -59,10 +59,25 @@ public class FrmCargo extends javax.swing.JFrame {
         jLabel3.setText("Nombre");
 
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +94,11 @@ public class FrmCargo extends javax.swing.JFrame {
         });
 
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         grilla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,12 +115,10 @@ public class FrmCargo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
@@ -198,6 +216,88 @@ public class FrmCargo extends javax.swing.JFrame {
             });
         }
     }//GEN-LAST:event_btnListarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        txtId.setText("");
+        txtNombre.setText("");
+        txtNombre.requestFocus();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:3
+        // validar
+        if(txtNombre.getText().trim().length() < 1)
+        {
+            JOptionPane.showMessageDialog(this, "Falta nombre del cargo");
+            txtNombre.requestFocus();
+            return;
+        }
+        
+        Cargo cargo = new Cargo();
+        int id = Integer.parseInt(txtId.getText());
+        cargo.setId(id);
+        cargo.setNombre(txtNombre.getText().trim().toUpperCase());
+        
+        CCargo controlador = new CCargo();
+        boolean res = controlador.actualizar(cargo);
+        
+        if(res)
+        {
+            JOptionPane.showMessageDialog(this, "Los datos fueron guardados");
+            btnLimpiar.doClick();
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Error en la ejecución solicitada");
+
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if(txtId.getText().trim().length() < 1)
+        {
+            JOptionPane.showMessageDialog(this, "Falta nombre del cargo");
+            txtNombre.requestFocus();
+            return;
+        }
+        
+        CCargo controlador = new CCargo();
+        int id = Integer.parseInt(txtId.getText());
+        boolean res = controlador.eliminar(id);
+        
+        if(res)
+        {
+            JOptionPane.showMessageDialog(this, "Los datos fueron eliminados");
+            btnLimpiar.doClick();
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Error en la ejecución solicitada");
+
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        if(txtId.getText().trim().length() < 1)
+        {
+            JOptionPane.showMessageDialog(this, "Falta nombre del cargo");
+            txtNombre.requestFocus();
+            return;
+        }
+        
+        CCargo controlador = new CCargo();
+        int id = Integer.parseInt(txtId.getText());
+        Cargo cargo = controlador.buscarPorId(id);
+        
+        if(cargo != null)
+        {
+            txtId.setText("" + cargo.getId());
+            txtNombre.setText(cargo.getNombre());
+            txtNombre.requestFocus();
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Error en la ejecución solicitada");
+
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     /**
      * @param args the command line arguments
