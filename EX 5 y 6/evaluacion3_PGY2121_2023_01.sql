@@ -37,8 +37,9 @@ CREATE TABLE Persona
     digito              varchar(1)      not null,
     nombre              varchar(50)     not null,
     apellido            varchar(50)     not null,
-    sueldo              int             not null,
-	esCliente			int 			not null,
+	direccion			varchar(100)	not null
+    sueldo              int             null,
+	esEmpresa			int 			null,
 	habilitado			int 			not null,
     UNIQUE(rut),
     FOREIGN KEY(idCargo)
